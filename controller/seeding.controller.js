@@ -1,12 +1,15 @@
 const pool = require("../queries");
 const fs = require("fs");
 
+// membaca query untuk menambahkan data actor
 const insertActorSQL = fs.readFileSync("./sql/insert.actor.sql", {
 	encoding: "utf8",
 });
 
+// fungsi menambahkan data actor
+// query > menambahkan data actor
 pool.query(insertActorSQL, (error, results) => {
 	if (error) console.log(error);
 	console.log("Seeding Completed!");
-	pool.end;
+	pool.end; // menutup koneksi
 });
