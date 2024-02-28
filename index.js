@@ -1,6 +1,6 @@
 const express = require("express");
 const pool = require("./queries");
-const router = require("./routes");
+const router = require("./routes/actors.routes");
 const app = express();
 const port = 3000;
 
