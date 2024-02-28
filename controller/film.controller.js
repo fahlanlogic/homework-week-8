@@ -15,4 +15,19 @@ const getAllFilm = (req, res) => {
 	});
 };
 
-module.exports = getAllFilm;
+const getFilmByIdSQL = fs.readFileSync("./sql/get.film.byid.sql", {
+	encoding: "utf8",
+});
+const getFilmById = (req, res) => {
+	const id = parseInt(req.params.id);
+
+	pool.query(getFilmByIdSQL, [id], (error, results) => {
+		if (error) throw error;
+		res.send(results.rows);
+	});
+};
+
+module.exports = {
+	getAllFilm,
+	getFilmById,
+};

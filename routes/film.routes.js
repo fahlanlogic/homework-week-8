@@ -1,8 +1,9 @@
 const express = require("express");
-const getAllFilm = require("../controller/film.controller");
+const film = require("../controller/film.controller");
 const router = express.Router();
 
 // routes mengambil data seluruh film
-router.get("/", getAllFilm);
+router.get("/", film.getAllFilm);
+router.get("/:id", film.getFilmById);
 
 module.exports = router;
