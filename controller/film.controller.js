@@ -10,13 +10,16 @@ const getAllFilmSQL = fs.readFileSync("./sql/get.all.film.sql", {
 const getAllFilm = (req, res) => {
 	// query > mengambil data seluruh film
 	pool.query(getAllFilmSQL, (error, results) => {
-		if (error) throw error;
-		res.send(results.rows);
+		if (error) {
+			console.log(error); // tampilkan error di console
+			res.status(400).json(error); // set response status 400 dan tampilkan error berupa json
+		}
+		res.status(200).json(results.rows); // mengirim response dari query
 	});
 };
 
 // membaca query untuk mengambil data film berdasarkan id
-const getFilmByIdSQL = fs.readFileSync("./sql/get.film.byid.sql", {
+const getFilmByIdSQL = fs.readFileSync("./sql/get.film.by.id.sql", {
 	encoding: "utf8",
 });
 
@@ -25,8 +28,11 @@ const getFilmById = (req, res) => {
 	const id = parseInt(req.params.id); // mengambil id film dari path parameter
 
 	pool.query(getFilmByIdSQL, [id], (error, results) => {
-		if (error) throw error;
-		res.send(results.rows);
+		if (error) {
+			console.log(error); // tampilkan error di console
+			res.status(400).json(error); // set response status 400 dan tampilkan error berupa json
+		}
+		res.status(200).json(results.rows); // mengirim response dari query
 	});
 };
 
@@ -36,14 +42,14 @@ const getFilmByCategorySQL = fs.readFileSync("./sql/get.film.by.category.sql", {
 });
 // fungsi mengambil data film berdasarkan category
 const getFilmByCategory = (req, res) => {
-	let name = req.params.name; // mengambil category dari path parameter
+	let name = req.params.name; // mengambil nama category dari path parameter
 	// query > mengambil data film berdasarkan category
 	pool.query(getFilmByCategorySQL, [name], (error, results) => {
 		if (error) {
-			res.status(400).json(error);
-			console.log(error);
+			console.log(error); // tampilkan error di console
+			res.status(400).json(error); // set response status 400 dan tampilkan error berupa json
 		}
-		res.status(200).json(results.rows);
+		res.status(200).json(results.rows); // mengirim response dari query
 	});
 };
 

@@ -7,7 +7,7 @@ const getAllActors = (req, res) => {
 		if (error) {
 			throw error; // melempar error jika terjadi
 		}
-		res.send(results.rows); // mengirim response hasil dari query
+		res.status(200).json(results.rows); // mengirim response hasil dari query
 	});
 };
 

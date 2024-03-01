@@ -8,23 +8,12 @@ const getCategoriesSQL = fs.readFileSync("./sql/get.categories.sql", {
 const getCategories = (req, res) => {
 	// query > mengambil data table category
 	pool.query(getCategoriesSQL, (error, results) => {
-		if (error) throw error; // melempar error jika terjadi
+		if (error) {
+			console.log(error); // tampilkan error di console
+			res.status(400).json(error); // set response status 400 dan tampilkan error berupa json
+		}
 		res.send(results.rows); // mengirim response hasil dari query
 	});
 };
 
-// const getCategoryById = (req, res) => {
-// 	const id = parseInt(req.params.id); // mengambil id category dari path parameter
-// 	pool.query(
-// 		"SELECT * FROM category WHERE category_id = $1",
-// 		[id],
-// 		(error, result) => {
-// 			if (error) throw error; // melempar error jika terjadi
-// 			res.send(result.rows); // mengirim response hadil dari query
-// 		}
-// 	);
-// };
-
-module.exports =
-	// getCategoryById,
-	getCategories;
+module.exports = getCategories;
