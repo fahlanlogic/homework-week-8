@@ -13,19 +13,18 @@ const getCategories = (req, res) => {
 	});
 };
 
-const getCategoriesById = (req, res) => {
-	const id = parseInt(req.params.id); // mengambil id category dari path parameter
-	pool.query(
-		"SELECT * FROM category WHERE category_id = $1",
-		[id],
-		(error, result) => {
-			if (error) throw error; // melempar error jika terjadi
-			res.send(result.rows); // mengirim response hadil dari query
-		}
-	);
-};
+// const getCategoryById = (req, res) => {
+// 	const id = parseInt(req.params.id); // mengambil id category dari path parameter
+// 	pool.query(
+// 		"SELECT * FROM category WHERE category_id = $1",
+// 		[id],
+// 		(error, result) => {
+// 			if (error) throw error; // melempar error jika terjadi
+// 			res.send(result.rows); // mengirim response hadil dari query
+// 		}
+// 	);
+// };
 
-module.exports = {
-	getCategoriesById,
-	getCategories,
-};
+module.exports =
+	// getCategoryById,
+	getCategories;
