@@ -5,7 +5,8 @@ const getAllActors = (req, res) => {
 	// query > mengambil data seluruh actor
 	pool.query("SELECT * FROM actor;", (error, results) => {
 		if (error) {
-			throw error; // melempar error jika terjadi
+			console.log(error); // melempar error jika terjadi
+			res.status(500).json(error); // set response status 500 dan tampilkan error berupa json
 		}
 		res.status(200).json(results.rows); // mengirim response hasil dari query
 	});
@@ -20,7 +21,10 @@ const getActorsById = (req, res) => {
 		"SELECT * FROM actor WHERE actor_id = $1",
 		[id],
 		(error, result) => {
-			if (error) throw error; // melempar error jika terjadi
+			if (error) {
+				console.log(error);
+				res.status(500).json(error); // set response status 500 dan tampilkan error berupa json
+			} // melempar error jika terjadi
 			res.send(result.rows); // mengirim response hadil dari query
 		}
 	);

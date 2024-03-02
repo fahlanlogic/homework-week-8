@@ -10,9 +10,9 @@ const getCategories = (req, res) => {
 	pool.query(getCategoriesSQL, (error, results) => {
 		if (error) {
 			console.log(error); // tampilkan error di console
-			res.status(400).json(error); // set response status 400 dan tampilkan error berupa json
+			res.status(500).json(error); // set response status 500 dan tampilkan error berupa json
 		}
-		res.send(results.rows); // mengirim response hasil dari query
+		res.send(results); // mengirim response hasil dari query
 	});
 };
 

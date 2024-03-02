@@ -12,7 +12,7 @@ const getAllFilm = (req, res) => {
 	pool.query(getAllFilmSQL, (error, results) => {
 		if (error) {
 			console.log(error); // tampilkan error di console
-			res.status(400).json(error); // set response status 400 dan tampilkan error berupa json
+			res.status(500).json(error); // set response status 500 dan tampilkan error berupa json
 		}
 		res.status(200).json(results.rows); // mengirim response dari query
 	});
@@ -30,7 +30,7 @@ const getFilmById = (req, res) => {
 	pool.query(getFilmByIdSQL, [id], (error, results) => {
 		if (error) {
 			console.log(error); // tampilkan error di console
-			res.status(400).json(error); // set response status 400 dan tampilkan error berupa json
+			res.status(500).json(error); // set response status 500 dan tampilkan error berupa json
 		}
 		res.status(200).json(results.rows); // mengirim response dari query
 	});
@@ -47,7 +47,7 @@ const getFilmByCategory = (req, res) => {
 	pool.query(getFilmByCategorySQL, [name], (error, results) => {
 		if (error) {
 			console.log(error); // tampilkan error di console
-			res.status(400).json(error); // set response status 400 dan tampilkan error berupa json
+			res.status(500).json(error); // set response status 500 dan tampilkan error berupa json
 		}
 		res.status(200).json(results.rows); // mengirim response dari query
 	});

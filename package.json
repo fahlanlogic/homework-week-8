@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon index.js",
-    "seed": "node controller/seeding.controller.js"
+    "seed": "node seedings/seeding.controller.js"
   },
   "keywords": [],
   "author": "",

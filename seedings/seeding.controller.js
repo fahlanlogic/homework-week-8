@@ -2,7 +2,7 @@ const pool = require("../queries");
 const fs = require("fs");
 
 // membaca query untuk menambahkan data actor
-const insertActorSQL = fs.readFileSync("./sql/insert.actor.sql", {
+const insertActorSQL = fs.readFileSync("./seedings/seeding.sql", {
 	encoding: "utf8",
 });
 
