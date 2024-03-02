@@ -12,7 +12,7 @@ const getCategories = (req, res) => {
 			console.log(error); // tampilkan error di console
 			res.status(500).json(error); // set response status 500 dan tampilkan error berupa json
 		}
-		res.send(results); // mengirim response hasil dari query
+		res.send(results.rows); // mengirim response hasil dari query
 	});
 };
 
