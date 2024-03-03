@@ -36,13 +36,18 @@ const getFilmById = (req, res) => {
 	});
 };
 
-// membaca query untuk mengambil data film berdasarkan category
-const getFilmByCategorySQL = fs.readFileSync("./sql/get.film.by.category.sql", {
-	encoding: "utf8",
-});
 // fungsi mengambil data film berdasarkan category
 const getFilmByCategory = (req, res) => {
 	let name = req.params.name; // mengambil nama category dari path parameter
+
+	// membaca query untuk mengambil data film berdasarkan category
+	const getFilmByCategorySQL = fs.readFileSync(
+		"./sql/get.film.by.category.sql",
+		{
+			encoding: "utf8",
+		}
+	);
+
 	// query > mengambil data film berdasarkan category
 	pool.query(getFilmByCategorySQL, [name], (error, results) => {
 		if (error) {
